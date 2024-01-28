@@ -70,6 +70,13 @@ def update_balances(expense_data: ExpenseCreateRequest):
                     raise ValueError("Invalid expense type")
 
                 existing_balance['balances'][paid_by] = existing_balance['balances'].get(paid_by, 0) - share_amount
+                
+                user_who_paid_balance = balances_collection.find_one({'user_id': paid_by})
+                
+                if(user_who_paid_balance):
+                    user_who_paid_balance['balances'][participant_id] = user_who_paid_balance['balances'].get(participant_id, 0) + share_amount
+                    balances_collection.update_one({"user_id":paid_by} , {'$set': user_who_paid_balance}, upsert=True )
+
 
             # Update the balances collection
             balances_collection.update_one({'user_id': participant_id}, {'$set': existing_balance}, upsert=True)
