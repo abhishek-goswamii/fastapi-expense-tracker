@@ -4,4 +4,3 @@ class CreateUser(BaseModel):
     name: str
     email: str
     mobile: str
-    balance: float

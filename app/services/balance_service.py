@@ -9,7 +9,17 @@ def get_balance(user_id:str):
     """
     try:
         document = balances_collection.find_one({"user_id":user_id},  {'_id': 0})
-        return document
+        net_balance = 0
+        if document:
+
+            for balance in document.get("balances", {}).values():
+                net_balance += balance
+
+            document["my_net_balance"] = net_balance
+            return document
+        else:
+            return None
+
     except Exception as e:
         print(e)
         raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail="Failed to get documents")

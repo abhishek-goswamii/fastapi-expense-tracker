@@ -58,18 +58,33 @@ To begin using this project, follow these simple steps:
 
 
 
-8. **New Expense Json Body Example:**
+8. **Expenses Collection Structure:**
     {
+        "_id": "65b6538dc626f3f4bca526f3",
         "name": "Electricity Bill",
-        "amount": 1000.00,
+        "amount": 1000.0,
         "expense_type": "EQUAL",
         "participants": [
-            {"user_id": "65b64f6cc1ec164304dcf440", "share": 1},
-            {"user_id": "65b64f65c1ec164304dcf43f", "share": 1},
-            {"user_id": "65b64f59c1ec164304dcf43e", "share": 1},
-            {"user_id": "65b64f46c1ec164304dcf43d", "share": 1}
+            {
+                "user_id": "65b64f6cc1ec164304dcf440",
+                "share": 1
+            },
+            {
+                "user_id": "65b64f65c1ec164304dcf43f",
+                "share": 1
+            },
+            {
+                "user_id": "65b64f59c1ec164304dcf43e",
+                "share": 1
+            },
+            {
+                "user_id": "65b64f46c1ec164304dcf43d",
+                "share": 1
+            }
         ],
-        "paid_by": "65b64f46c1ec164304dcf43d"
+        "paid_by": "65b64f46c1ec164304dcf43d",
+        "timestamp": "2024-01-28T18:45:57.663000",
+        "is_active": true
     }
 
 
@@ -83,5 +98,39 @@ To begin using this project, follow these simple steps:
 }
 
 
+ENDPOINTS
 
 
+/user (POST METHOD create new user)
+request body -> {
+    "name":"u4",
+    "email":"u7",
+    "mobile":"13433423434"
+}
+
+/expense (POST METHOD create new expense)
+
+request body {
+    "name": "Electricity Bill",
+    "amount": 1000.00,
+    "expense_type": "EQUAL",
+    "participants": [
+        {"user_id": "65b64f6cc1ec164304dcf440", "share": 1},
+        {"user_id": "65b64f65c1ec164304dcf43f", "share": 1},
+        {"user_id": "65b64f59c1ec164304dcf43e", "share": 1},
+        {"user_id": "65b64f46c1ec164304dcf43d", "share": 1}
+    ],
+    "paid_by": "65b64f6cc1ec164304dcf440"
+}
+
+/balance/65b64f46c1ec164304dcf43d (GET METHOD summery of my account, who owes me how much)
+
+response - > {
+    "user_id": "65b64f46c1ec164304dcf43d",
+    "balances": {
+        "65b64f6cc1ec164304dcf440": 500.0,
+        "65b64f65c1ec164304dcf43f": 750.0,
+        "65b64f59c1ec164304dcf43e": 750.0
+    },
+    "my_net_balance": 2000.0
+}
