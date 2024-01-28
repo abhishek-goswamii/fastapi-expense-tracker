@@ -9,6 +9,7 @@ url = config["MONGO_URI"]
 client = pymongo.MongoClient(url)
 expensetracker_db = client["expensetracker"]
 users_collection = expensetracker_db["users"]
+expenses_collection = expensetracker_db["expenses"]
 
 
 try:

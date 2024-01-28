@@ -1,6 +1,6 @@
 # Expense Splitter
 
-
+- skipping token authentication for endpoints
 
 ## Getting Started
 
