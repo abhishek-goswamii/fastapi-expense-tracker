@@ -21,11 +21,9 @@ venv
 docs.zip
 archive.zip
 
-# vim temporary files
 *~
 .*.sw?
 .cache
 
-# macOS
 .DS_Store
 .env
