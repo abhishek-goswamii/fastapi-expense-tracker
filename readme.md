@@ -1,6 +1,6 @@
 # Expense Splitter
 
-Welcome to Project Name! This project provides [brief description or purpose of the project].
+
 
 ## Getting Started
 
@@ -23,7 +23,8 @@ To begin using this project, follow these simple steps:
     cd to project folder
     ```
 
-4. **Run Docker Compose and Activate Virtual Environment:**
+4. **Run Docker Compose file and Activate Virtual Environment:**
+    
     ```
     docker-compose up -d
     ```

@@ -24,4 +24,20 @@ def create_user(user_data: User):
         raise HTTPException(status_code=500, detail="Internal server error")
     
 
-    
+
+
+def get_all_users():
+    """
+    Retrieve all users from the database
+    """
+    try:
+
+        all_documents = list(users_collection.find())
+        # all_documents = list(users_collection.find( {},{"password": 0}))
+
+        for doc in all_documents:
+            doc['_id'] = str(doc['_id'])
+        
+        return all_documents
+    except Exception as e:
+        raise HTTPException(status_code=500, detail="Internal server error")
