@@ -1,18 +1,22 @@
 from fastapi import APIRouter, HTTPException
 from models.user import User
-from services.user_service import UserService
+from services.user_service import create_user, root
 
 
-user_router = APIRouter()
+router = APIRouter()
 
-service = UserService()
+@router.get('/user')
+def r():
+    return root()
 
-@user_router.post("/user", response_model=User)
-async def create_user(user_data: dict):
+
+@router.post("/user", response_model=User)
+async def create(user_data: User):
     try:
-        user = service.create_user(user_data)
+        user = create_user(user_data)
         return user
     except ValueError as ve:
         raise HTTPException(status_code=400, detail=str(ve))
     except Exception as e:
+        print(e)
         raise HTTPException(status_code=500, detail="Internal server error")

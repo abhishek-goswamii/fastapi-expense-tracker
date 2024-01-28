@@ -3,4 +3,8 @@ from dotenv import dotenv_values
 
 config = dotenv_values(".env")
 
-mongodb_client = MongoClient(config["MONGO_URI"])
+myclient = MongoClient(config["MONGO_URI"])
+db = myclient["expensetracker"]
+
+
+
