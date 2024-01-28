@@ -9,11 +9,12 @@ router = APIRouter()
 async def new_expense(expense_data: ExpenseCreateRequest, status_code=status.HTTP_200_OK):
     return expenses_services.create_new_expense(expense_data)
 
+@router.get("/expense")
+async def new_expense(status_code=status.HTTP_200_OK):
+    return expenses_services.get_all_balances()
+
    
 @router.get("/expenses")
 async def new_expense(status_code=status.HTTP_200_OK):
     return expenses_services.get_all_expense()
 
-   
-
-    

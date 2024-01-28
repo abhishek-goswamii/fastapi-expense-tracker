@@ -20,9 +20,6 @@ def create_user(user_data: CreateUser):
     except Exception as e:
         raise HTTPException(status_code=500, detail="Internal server error")
     
-    
-    
-
 
 def get_all_users():
     """
